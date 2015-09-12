@@ -14,6 +14,11 @@
 		638220681BA3B0F1008D9116 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 638220661BA3B0F1008D9116 /* LaunchScreen.storyboard */; };
 		638220731BA3B0F1008D9116 /* HoldToSaveImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638220721BA3B0F1008D9116 /* HoldToSaveImageTests.swift */; };
 		6382207E1BA3B0F2008D9116 /* HoldToSaveImageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6382207D1BA3B0F2008D9116 /* HoldToSaveImageUITests.swift */; };
+		638220921BA3B26E008D9116 /* Drop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6382208F1BA3B26E008D9116 /* Drop.swift */; settings = {ASSET_TAGS = (); }; };
+		638220931BA3B26E008D9116 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 638220901BA3B26E008D9116 /* Info.plist */; settings = {ASSET_TAGS = (); }; };
+		638220951BA3B2C9008D9116 /* Hokusai.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638220941BA3B2C9008D9116 /* Hokusai.swift */; settings = {ASSET_TAGS = (); }; };
+		638220971BA3B360008D9116 /* TaskQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638220961BA3B360008D9116 /* TaskQueue.swift */; settings = {ASSET_TAGS = (); }; };
+		638220991BA3B3D9008D9116 /* Just.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638220981BA3B3D9008D9116 /* Just.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +52,12 @@
 		638220791BA3B0F2008D9116 /* HoldToSaveImageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HoldToSaveImageUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6382207D1BA3B0F2008D9116 /* HoldToSaveImageUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoldToSaveImageUITests.swift; sourceTree = "<group>"; };
 		6382207F1BA3B0F2008D9116 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6382208F1BA3B26E008D9116 /* Drop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Drop.swift; sourceTree = "<group>"; };
+		638220901BA3B26E008D9116 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		638220911BA3B26E008D9116 /* SwiftyDrop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftyDrop.h; sourceTree = "<group>"; };
+		638220941BA3B2C9008D9116 /* Hokusai.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hokusai.swift; sourceTree = "<group>"; };
+		638220961BA3B360008D9116 /* TaskQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskQueue.swift; sourceTree = "<group>"; };
+		638220981BA3B3D9008D9116 /* Just.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Just.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +114,8 @@
 				638220641BA3B0F1008D9116 /* Assets.xcassets */,
 				638220661BA3B0F1008D9116 /* LaunchScreen.storyboard */,
 				638220691BA3B0F1008D9116 /* Info.plist */,
+				6382208B1BA3B23A008D9116 /* Third-Parties */,
+				638220961BA3B360008D9116 /* TaskQueue.swift */,
 			);
 			path = HoldToSaveImage;
 			sourceTree = "<group>";
@@ -123,6 +136,26 @@
 				6382207F1BA3B0F2008D9116 /* Info.plist */,
 			);
 			path = HoldToSaveImageUITests;
+			sourceTree = "<group>";
+		};
+		6382208B1BA3B23A008D9116 /* Third-Parties */ = {
+			isa = PBXGroup;
+			children = (
+				638220981BA3B3D9008D9116 /* Just.swift */,
+				638220941BA3B2C9008D9116 /* Hokusai.swift */,
+				6382208E1BA3B26E008D9116 /* SwiftyDrop */,
+			);
+			name = "Third-Parties";
+			sourceTree = "<group>";
+		};
+		6382208E1BA3B26E008D9116 /* SwiftyDrop */ = {
+			isa = PBXGroup;
+			children = (
+				6382208F1BA3B26E008D9116 /* Drop.swift */,
+				638220901BA3B26E008D9116 /* Info.plist */,
+				638220911BA3B26E008D9116 /* SwiftyDrop.h */,
+			);
+			path = SwiftyDrop;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,6 +261,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				638220931BA3B26E008D9116 /* Info.plist in Resources */,
 				638220681BA3B0F1008D9116 /* LaunchScreen.storyboard in Resources */,
 				638220651BA3B0F1008D9116 /* Assets.xcassets in Resources */,
 				638220631BA3B0F1008D9116 /* Main.storyboard in Resources */,
@@ -256,6 +290,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				638220601BA3B0F1008D9116 /* ViewController.swift in Sources */,
+				638220921BA3B26E008D9116 /* Drop.swift in Sources */,
+				638220951BA3B2C9008D9116 /* Hokusai.swift in Sources */,
+				638220991BA3B3D9008D9116 /* Just.swift in Sources */,
+				638220971BA3B360008D9116 /* TaskQueue.swift in Sources */,
 				6382205E1BA3B0F1008D9116 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  HoldToSaveImage
 //
-//  Created by 陈为 on 9/12/15.
-//  Copyright © 2015 David Chen. All rights reserved.
+//  Created by David Chen on 9/12/15.
+//  Copyright © 2015 CW Soft. All rights reserved.
 //
 
 import UIKit

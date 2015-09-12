@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,8 +15,30 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dMc-Fb-hE7">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Pau-E6-PmW">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Pau-E6-PmW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KuP-Cf-Nru"/>
+                            <constraint firstItem="Pau-E6-PmW" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="NW2-hD-Dsn"/>
+                            <constraint firstItem="dMc-Fb-hE7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Ncp-7P-gB8"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dMc-Fb-hE7" secondAttribute="bottom" id="UCW-PM-F83"/>
+                            <constraint firstItem="dMc-Fb-hE7" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Zhy-Zu-ezK"/>
+                            <constraint firstAttribute="trailing" secondItem="dMc-Fb-hE7" secondAttribute="trailing" id="ihf-XD-qmu"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="Pau-E6-PmW" id="JkK-Em-b1w"/>
+                        <outlet property="myWebView" destination="dMc-Fb-hE7" id="rJh-ts-CAR"/>
+                        <outlet property="webView" destination="dMc-Fb-hE7" id="GDv-kk-Pez"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
