@@ -225,7 +225,7 @@ final public class Hokusai: UIViewController, UIGestureRecognizerDelegate {
     public var colorScheme        = HOKColorScheme.Hokusai
     public var fontName           = ""
     public var colors:HOKColors!  = nil
-    public var cancelButtonTitle  = "取消"
+    public var cancelButtonTitle  = "Cancel"
     public var cancelButtonAction : (()->Void)?
     
     required public init(coder aDecoder: NSCoder) {
@@ -350,7 +350,7 @@ final public class Hokusai: UIViewController, UIGestureRecognizerDelegate {
         menuView.setShapeLayer(colors)
         
         // Add a cancel button
-        self.addCancelButton("取消")
+        self.addCancelButton("Cancel")
         
         // Decide the menu size
         let menuHeight = CGFloat(buttons.count + 2) * kButtonInterval + CGFloat(buttons.count) * kButtonHeight

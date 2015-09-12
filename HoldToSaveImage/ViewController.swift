@@ -16,7 +16,6 @@ class ViewController: UIViewController, UIWebViewDelegate {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - Vars & Lets
-    
     let kTouchJavaScriptString: String = "document.ontouchstart=function(event){x=event.targetTouches[0].clientX;y=event.targetTouches[0].clientY;document.location=\"myweb:touch:start:\"+x+\":\"+y;};document.ontouchmove=function(event){x=event.targetTouches[0].clientX;y=event.targetTouches[0].clientY;document.location=\"myweb:touch:move:\"+x+\":\"+y;};document.ontouchcancel=function(event){document.location=\"myweb:touch:cancel\";};document.ontouchend=function(event){document.location=\"myweb:touch:end\";};"
     var _gesState: Int = 0, _imgURL: String = "", _timer: NSTimer = NSTimer()
     /*
@@ -102,24 +101,14 @@ class ViewController: UIViewController, UIWebViewDelegate {
     
     // MARK: - Functions
     func loadWebPage () {
-        activityIndicator.startAnimating()
-        let result = Just.get("http://www.apple.com")
-        if (result.ok) {
-            let queue = TaskQueue()
-            queue.tasks +=~ {
-                self.myWebView.loadHTMLString(result.text!, baseURL: nil)
-            }
-                queue.run()
-        } else {
-            Drop.down("Error", state: DropState.Error)
-        }
+        self.myWebView.loadRequest(NSURLRequest(URL: NSURL(string: "https://education.github.com/")!))
     }
     
     // MARK: - Override functions
     override func viewDidLoad() {
         myWebView.delegate = self
-        self.tabBarController!.tabBar.hidden = true
         super.viewDidLoad()
+        activityIndicator.startAnimating()
         let queue = TaskQueue()
         queue.tasks +=! {
             self.loadWebPage()
