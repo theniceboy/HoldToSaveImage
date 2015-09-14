@@ -10,8 +10,11 @@ See the example in [ViewController.swift](https://github.com/theniceboy/HoldToSa
 
 ## Open-source project used:
 [github.com/ytakzk/Hokusai](https://github.com/ytakzk/Hokusai)
+
 [github.com/JustHTTP/Just](https://github.com/JustHTTP/Just)
+
 [github.com/morizotter/SwiftyDrop](https://github.com/morizotter/SwiftyDrop)
+
 [github.com/icanzilb/TaskQueue](https://github.com/icanzilb/TaskQueue)
 
 ### License
