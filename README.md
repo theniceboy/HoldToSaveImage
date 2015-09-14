@@ -1,14 +1,19 @@
-# HoldToSaveImage
+## HoldToSaveImage
 A UIWebView that allows user to press and hold to save a image from webview to user's photo album using Swift 2.0
 
-## Usage
+### Usage
 See the example in [ViewController.swift](https://github.com/theniceboy/HoldToSaveImage/blob/master/HoldToSaveImage/ViewController.swift)
 
-## Version: 1.0
+### Requirements
+Swift 2.0
 
-## Author: [theniceboy (David Chen)](http://cwsoft.cc)
+### Version:
+1.0 (Sept. 12, 2015)
 
-## Open-source project used:
+### Author:
+[theniceboy (David Chen)](http://cwsoft.cc)
+
+### Open-source project used:
 [github.com/ytakzk/Hokusai](https://github.com/ytakzk/Hokusai)
 
 [github.com/JustHTTP/Just](https://github.com/JustHTTP/Just)
