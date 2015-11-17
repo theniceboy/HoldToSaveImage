@@ -2,10 +2,11 @@
 A UIWebView that allows user to press and hold to save a image from webview to user's photo album using Swift 2.0
 
 ### Usage
+![](https://github.com/theniceboy/ImageCache/raw/master/demo.gif)
 See the example in [ViewController.swift](https://github.com/theniceboy/HoldToSaveImage/blob/master/HoldToSaveImage/ViewController.swift)
 
 ### Requirements
-Swift 2.0
+Swift 2.0 (2.1)
 
 ### Version:
 1.0 (Sept. 12, 2015)
