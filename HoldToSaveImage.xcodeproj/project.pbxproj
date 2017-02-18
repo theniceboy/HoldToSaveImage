@@ -14,11 +14,10 @@
 		638220681BA3B0F1008D9116 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 638220661BA3B0F1008D9116 /* LaunchScreen.storyboard */; };
 		638220731BA3B0F1008D9116 /* HoldToSaveImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638220721BA3B0F1008D9116 /* HoldToSaveImageTests.swift */; };
 		6382207E1BA3B0F2008D9116 /* HoldToSaveImageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6382207D1BA3B0F2008D9116 /* HoldToSaveImageUITests.swift */; };
-		638220921BA3B26E008D9116 /* Drop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6382208F1BA3B26E008D9116 /* Drop.swift */; settings = {ASSET_TAGS = (); }; };
-		638220931BA3B26E008D9116 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 638220901BA3B26E008D9116 /* Info.plist */; settings = {ASSET_TAGS = (); }; };
-		638220951BA3B2C9008D9116 /* Hokusai.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638220941BA3B2C9008D9116 /* Hokusai.swift */; settings = {ASSET_TAGS = (); }; };
-		638220971BA3B360008D9116 /* TaskQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638220961BA3B360008D9116 /* TaskQueue.swift */; settings = {ASSET_TAGS = (); }; };
-		638220991BA3B3D9008D9116 /* Just.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638220981BA3B3D9008D9116 /* Just.swift */; settings = {ASSET_TAGS = (); }; };
+		638220921BA3B26E008D9116 /* Drop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6382208F1BA3B26E008D9116 /* Drop.swift */; };
+		638220931BA3B26E008D9116 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 638220901BA3B26E008D9116 /* Info.plist */; };
+		638220951BA3B2C9008D9116 /* Hokusai.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638220941BA3B2C9008D9116 /* Hokusai.swift */; };
+		638220991BA3B3D9008D9116 /* Just.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638220981BA3B3D9008D9116 /* Just.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +55,6 @@
 		638220901BA3B26E008D9116 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		638220911BA3B26E008D9116 /* SwiftyDrop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftyDrop.h; sourceTree = "<group>"; };
 		638220941BA3B2C9008D9116 /* Hokusai.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hokusai.swift; sourceTree = "<group>"; };
-		638220961BA3B360008D9116 /* TaskQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskQueue.swift; sourceTree = "<group>"; };
 		638220981BA3B3D9008D9116 /* Just.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Just.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,7 +113,6 @@
 				638220661BA3B0F1008D9116 /* LaunchScreen.storyboard */,
 				638220691BA3B0F1008D9116 /* Info.plist */,
 				6382208B1BA3B23A008D9116 /* Third-Parties */,
-				638220961BA3B360008D9116 /* TaskQueue.swift */,
 			);
 			path = HoldToSaveImage;
 			sourceTree = "<group>";
@@ -225,13 +222,16 @@
 				TargetAttributes = {
 					638220591BA3B0F1008D9116 = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0820;
 					};
 					6382206D1BA3B0F1008D9116 = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0820;
 						TestTargetID = 638220591BA3B0F1008D9116;
 					};
 					638220781BA3B0F2008D9116 = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0820;
 						TestTargetID = 638220591BA3B0F1008D9116;
 					};
 				};
@@ -293,7 +293,6 @@
 				638220921BA3B26E008D9116 /* Drop.swift in Sources */,
 				638220951BA3B2C9008D9116 /* Hokusai.swift in Sources */,
 				638220991BA3B3D9008D9116 /* Just.swift in Sources */,
-				638220971BA3B360008D9116 /* TaskQueue.swift in Sources */,
 				6382205E1BA3B0F1008D9116 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,6 +440,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cc.cwsoft.HoldToSaveImage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -453,6 +453,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cc.cwsoft.HoldToSaveImage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -464,6 +465,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cc.cwsoft.HoldToSaveImageTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HoldToSaveImage.app/HoldToSaveImage";
 			};
 			name = Debug;
@@ -476,6 +478,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cc.cwsoft.HoldToSaveImageTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HoldToSaveImage.app/HoldToSaveImage";
 			};
 			name = Release;
@@ -487,6 +490,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cc.cwsoft.HoldToSaveImageUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = HoldToSaveImage;
 				USES_XCTRUNNER = YES;
 			};
@@ -499,6 +503,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cc.cwsoft.HoldToSaveImageUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = HoldToSaveImage;
 				USES_XCTRUNNER = YES;
 			};
@@ -523,6 +528,7 @@
 				638220841BA3B0F2008D9116 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		638220851BA3B0F2008D9116 /* Build configuration list for PBXNativeTarget "HoldToSaveImageTests" */ = {
 			isa = XCConfigurationList;
@@ -531,6 +537,7 @@
 				638220871BA3B0F2008D9116 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		638220881BA3B0F2008D9116 /* Build configuration list for PBXNativeTarget "HoldToSaveImageUITests" */ = {
 			isa = XCConfigurationList;
@@ -539,6 +546,7 @@
 				6382208A1BA3B0F2008D9116 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

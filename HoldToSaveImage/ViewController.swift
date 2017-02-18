@@ -17,7 +17,7 @@ class ViewController: UIViewController, UIWebViewDelegate {
     
     // MARK: - Vars & Lets
     let kTouchJavaScriptString: String = "document.ontouchstart=function(event){x=event.targetTouches[0].clientX;y=event.targetTouches[0].clientY;document.location=\"myweb:touch:start:\"+x+\":\"+y;};document.ontouchmove=function(event){x=event.targetTouches[0].clientX;y=event.targetTouches[0].clientY;document.location=\"myweb:touch:move:\"+x+\":\"+y;};document.ontouchcancel=function(event){document.location=\"myweb:touch:cancel\";};document.ontouchend=function(event){document.location=\"myweb:touch:end\";};"
-    var _gesState: Int = 0, _imgURL: String = "", _timer: NSTimer = NSTimer()
+    var _gesState: Int = 0, _imgURL: String = "", _timer: Timer = Timer()
     /*
     _gesState {
         none : 0,
@@ -27,14 +27,14 @@ class ViewController: UIViewController, UIWebViewDelegate {
     }
     */
     
-    func webView(webView: UIWebView, shouldStartLoadWithRequest _request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+    func webView(_ webView: UIWebView, shouldStartLoadWith _request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         
-        if (_request.URL! == "about:blank") {
+        if (_request.url?.absoluteString == "about:blank") {
             return false
         }
         
-        let requestString: String = (_request.URL?.absoluteString)!
-        var components: [String] = requestString.componentsSeparatedByString(":")
+        let requestString: String = (_request.url?.absoluteString)!
+        var components: [String] = requestString.components(separatedBy: ":")
         if (components.count > 1 && components[0] == "myweb") {
             if (components[1] == "touch") {
                 if (components[2] == "start") {
@@ -42,11 +42,11 @@ class ViewController: UIViewController, UIWebViewDelegate {
                     let ptX: Float = Float(components[3])!
                     let ptY: Float = Float(components[4])!
                     let js: String = "document.elementFromPoint(\(ptX), \(ptY)).tagName"
-                    let tagName: String = myWebView.stringByEvaluatingJavaScriptFromString(js)!
+                    let tagName: String = myWebView.stringByEvaluatingJavaScript(from: js)!
                     _imgURL = ""
                     if (tagName == "IMG") {
-                        _imgURL = myWebView.stringByEvaluatingJavaScriptFromString("document.elementFromPoint(\(ptX), \(ptY)).src")!
-                        _timer = NSTimer.scheduledTimerWithTimeInterval(0.3, target: self, selector: "handleLongTouch", userInfo: nil, repeats: false)
+                        _imgURL = myWebView.stringByEvaluatingJavaScript(from: "document.elementFromPoint(\(ptX), \(ptY)).src")!
+                        _timer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(ViewController.handleLongTouch), userInfo: nil, repeats: false)
                     }
                 } else {
                     if (components[2] == "move") {
@@ -54,7 +54,7 @@ class ViewController: UIViewController, UIWebViewDelegate {
                     } else {
                         if (components[2] == "end") {
                             _timer.invalidate()
-                            self._timer = NSTimer()
+                            self._timer = Timer()
                             self._gesState = 4
                         }
                     }
@@ -68,40 +68,41 @@ class ViewController: UIViewController, UIWebViewDelegate {
     func handleLongTouch() {
         let hokusai = Hokusai()
         hokusai.addButton("Save") {
-            Drop.down("Saving...", state: DropState.Info)
-            let queue = TaskQueue()
-            queue.tasks +=! {
-                self.saveImage()
-            }
-            queue.run()
+            Drop.down("Saving...", state: DropState.info)
+            self.saveImage()
         }
         hokusai.show()
     }
     
     func saveImage () {
-        if let url = NSURL(string: self._imgURL) {
-            if let data = NSData(contentsOfURL: url) {
-                if (UIImage(data: data) != nil) {
-                    let image = UIImage(data: data)
-                    UIImageWriteToSavedPhotosAlbum(image!, self, "image:didFinishSavingWithError:contextInfo:", nil)
-                    return
-                }
+        DispatchQueue.global(qos: DispatchQoS.background.qosClass).async {
+            do {
+                let data = try Data(contentsOf: URL(string: self._imgURL)!)
+                let getImage = UIImage(data: data)
+                let newImagePNG = UIImagePNGRepresentation(getImage!)
+                var saveableImage = UIImage(data: newImagePNG!)
+                
+                
+                // Save to album
+            }
+            catch {
+                Drop.down("Failed", state: DropState.error)
+                return
             }
         }
-        Drop.down("Failed", state: DropState.Error)
     }
     
-    func image(image: UIImage, didFinishSavingWithError: NSError?, contextInfo: AnyObject) {
+    func image(_ image: UIImage, didFinishSavingWithError: NSError?, contextInfo: AnyObject) {
         if didFinishSavingWithError != nil {
-            Drop.down("Failed", state: DropState.Error)
+            Drop.down("Failed", state: DropState.error)
             return
         }
-        Drop.down("Success", state: DropState.Success)
+        Drop.down("Success", state: DropState.success)
     }
     
     // MARK: - Functions
     func loadWebPage () {
-        self.myWebView.loadRequest(NSURLRequest(URL: NSURL(string: "https://education.github.com/")!))
+        self.myWebView.loadRequest(URLRequest(url: URL(string: "https://education.github.com/")!))
     }
     
     // MARK: - Override functions
@@ -109,17 +110,13 @@ class ViewController: UIViewController, UIWebViewDelegate {
         myWebView.delegate = self
         super.viewDidLoad()
         activityIndicator.startAnimating()
-        let queue = TaskQueue()
-        queue.tasks +=! {
-            self.loadWebPage()
-        }
-        queue.run()
+        loadWebPage()
     }
     
     // MARK: - UIWebView delegate
-    func webViewDidFinishLoad(webView: UIWebView) {
+    func webViewDidFinishLoad(_ webView: UIWebView) {
         activityIndicator.stopAnimating()
-        activityIndicator.hidden = true
-        myWebView.stringByEvaluatingJavaScriptFromString(kTouchJavaScriptString)
+        activityIndicator.isHidden = true
+        myWebView.stringByEvaluatingJavaScript(from: kTouchJavaScriptString)
     }
 }

@@ -9,57 +9,57 @@
 import UIKit
 
 private struct HOKConsts {
-    let animationDuration:NSTimeInterval = 0.8
+    let animationDuration:TimeInterval = 0.8
     let hokusaiTag = 9999
 }
 
 // Action Types
 public enum HOKAcitonType {
-    case None, Selector, Closure
+    case none, selector, closure
 }
 
 // Color Types
 public enum HOKColorScheme {
-    case Hokusai, Asagi, Matcha, Tsubaki, Inari, Karasu, Enshu
+    case hokusai, asagi, matcha, tsubaki, inari, karasu, enshu
     
     func getColors() -> HOKColors {
         switch self {
-        case .Asagi:
+        case .asagi:
             return HOKColors(
                 backGroundColor: UIColorHex(0x0bada8),
                 buttonColor: UIColorHex(0x08827e),
                 cancelButtonColor: UIColorHex(0x6dcecb),
                 fontColor: UIColorHex(0xffffff)
             )
-        case .Matcha:
+        case .matcha:
             return HOKColors(
                 backGroundColor: UIColorHex(0x314631),
                 buttonColor: UIColorHex(0x618c61),
                 cancelButtonColor: UIColorHex(0x496949),
                 fontColor: UIColorHex(0xffffff)
             )
-        case .Tsubaki:
+        case .tsubaki:
             return HOKColors(
                 backGroundColor: UIColorHex(0xe5384c),
                 buttonColor: UIColorHex(0xac2a39),
                 cancelButtonColor: UIColorHex(0xc75764),
                 fontColor: UIColorHex(0xffffff)
             )
-        case .Inari:
+        case .inari:
             return HOKColors(
                 backGroundColor: UIColorHex(0xdd4d05),
                 buttonColor: UIColorHex(0xa63a04),
                 cancelButtonColor: UIColorHex(0xb24312),
                 fontColor: UIColorHex(0x231e1c)
             )
-        case .Karasu:
+        case .karasu:
             return HOKColors(
                 backGroundColor: UIColorHex(0x180614),
                 buttonColor: UIColorHex(0x3d303d),
                 cancelButtonColor: UIColorHex(0x261d26),
                 fontColor: UIColorHex(0x9b9981)
             )
-        case .Enshu:
+        case .enshu:
             return HOKColors(
                 backGroundColor: UIColorHex(0xccccbe),
                 buttonColor: UIColorHex(0xffffff),
@@ -76,7 +76,7 @@ public enum HOKColorScheme {
         }
     }
     
-    private func UIColorHex(hex: UInt) -> UIColor {
+    fileprivate func UIColorHex(_ hex: UInt) -> UIColor {
         return UIColor(
             red: CGFloat((hex & 0xFF0000) >> 16) / 255.0,
             green: CGFloat((hex & 0x00FF00) >> 8) / 255.0,
@@ -104,21 +104,21 @@ final public class HOKButton: UIButton {
     var target:AnyObject!
     var selector:Selector!
     var action:(()->Void)!
-    var actionType = HOKAcitonType.None
+    var actionType = HOKAcitonType.none
     var isCancelButton = false
     
     // Font
     let kDefaultFont      = "AvenirNext-DemiBold"
     let kFontSize:CGFloat = 16.0
     
-    func setColor(colors: HOKColors) {
-        self.setTitleColor(colors.fontColor, forState: .Normal)
+    func setColor(_ colors: HOKColors) {
+        self.setTitleColor(colors.fontColor, for: UIControlState())
         self.backgroundColor = (isCancelButton) ? colors.cancelButtonColor : colors.buttonColor
     }
     
-    func setFontName(fontName: String?) {
+    func setFontName(_ fontName: String?) {
         let name:String
-        if let fontName = fontName where !fontName.isEmpty {
+        if let fontName = fontName, !fontName.isEmpty {
             name = fontName
         } else {
             name = kDefaultFont
@@ -128,14 +128,14 @@ final public class HOKButton: UIButton {
 }
 
 final public class HOKMenuView: UIView {
-    var colorScheme = HOKColorScheme.Hokusai
+    var colorScheme = HOKColorScheme.hokusai
     
     public let kDamping: CGFloat               = 0.7
     public let kInitialSpringVelocity: CGFloat = 0.8
     
-    private var displayLink: CADisplayLink?
-    private let shapeLayer     = CAShapeLayer()
-    private var bendableOffset = UIOffsetZero
+    fileprivate var displayLink: CADisplayLink?
+    fileprivate let shapeLayer     = CAShapeLayer()
+    fileprivate var bendableOffset = UIOffset.zero
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -152,43 +152,43 @@ final public class HOKMenuView: UIView {
         shapeLayer.bounds.origin = frame.origin
     }
     
-    func setShapeLayer(colors: HOKColors) {
-        self.backgroundColor = UIColor.clearColor()
-        shapeLayer.fillColor = colors.backgroundColor.CGColor
-        self.layer.insertSublayer(shapeLayer, atIndex: 0)
+    func setShapeLayer(_ colors: HOKColors) {
+        self.backgroundColor = UIColor.clear
+        shapeLayer.fillColor = colors.backgroundColor.cgColor
+        self.layer.insertSublayer(shapeLayer, at: 0)
     }
     
     func positionAnimationWillStart() {
         if displayLink == nil {
-            displayLink = CADisplayLink(target: self, selector: "tick:")
-            displayLink!.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSDefaultRunLoopMode)
+            displayLink = CADisplayLink(target: self, selector: #selector(HOKMenuView.tick(_:)))
+            displayLink!.add(to: RunLoop.main, forMode: RunLoopMode.defaultRunLoopMode)
         }
         
         let newPosition   = layer.frame.origin
-        shapeLayer.bounds = CGRect(origin: CGPointZero, size: self.bounds.size)
+        shapeLayer.bounds = CGRect(origin: CGPoint.zero, size: self.bounds.size)
     }
     
     func updatePath() {
-        let width  = CGRectGetWidth(shapeLayer.bounds)
-        let height = CGRectGetHeight(shapeLayer.bounds)
+        let width  = shapeLayer.bounds.width
+        let height = shapeLayer.bounds.height
         
         let path = UIBezierPath()
-        path.moveToPoint(CGPoint(x: 0, y: 0))
-        path.addQuadCurveToPoint(CGPoint(x: width, y: 0),
+        path.move(to: CGPoint(x: 0, y: 0))
+        path.addQuadCurve(to: CGPoint(x: width, y: 0),
             controlPoint:CGPoint(x: width * 0.5, y: 0 + bendableOffset.vertical))
-        path.addQuadCurveToPoint(CGPoint(x: width, y: height + 100.0),
+        path.addQuadCurve(to: CGPoint(x: width, y: height + 100.0),
             controlPoint:CGPoint(x: width + bendableOffset.horizontal, y: height * 0.5))
-        path.addQuadCurveToPoint(CGPoint(x: 0, y: height + 100.0),
+        path.addQuadCurve(to: CGPoint(x: 0, y: height + 100.0),
             controlPoint: CGPoint(x: width * 0.5, y: height + 100.0))
-        path.addQuadCurveToPoint(CGPoint(x: 0, y: 0),
+        path.addQuadCurve(to: CGPoint(x: 0, y: 0),
             controlPoint: CGPoint(x: bendableOffset.horizontal, y: height * 0.5))
-        path.closePath()
+        path.close()
         
-        shapeLayer.path = path.CGPath
+        shapeLayer.path = path.cgPath
     }
     
-    func tick(displayLink: CADisplayLink) {
-        if let presentationLayer = layer.presentationLayer() as? CALayer {
+    func tick(_ displayLink: CADisplayLink) {
+        if let presentationLayer = layer.presentation() {
             var verticalOffset = self.layer.frame.origin.y - presentationLayer.frame.origin.y
             
             // On dismissing, the offset should not be offend on the buttons.
@@ -212,17 +212,17 @@ final public class HOKMenuView: UIView {
 
 final public class Hokusai: UIViewController, UIGestureRecognizerDelegate {
     // Views
-    private var menuView = HOKMenuView()
-    private var buttons  = [HOKButton]()
+    fileprivate var menuView = HOKMenuView()
+    fileprivate var buttons  = [HOKButton]()
     
-    private var instance:Hokusai!       = nil
-    private var kButtonWidth:CGFloat    = 250
-    private let kButtonHeight:CGFloat   = 48.0
-    private let kButtonInterval:CGFloat = 16.0
-    private var bgColor                 = UIColor(white: 1.0, alpha: 0.7)
+    fileprivate var instance:Hokusai!       = nil
+    fileprivate var kButtonWidth:CGFloat    = 250
+    fileprivate let kButtonHeight:CGFloat   = 48.0
+    fileprivate let kButtonInterval:CGFloat = 16.0
+    fileprivate var bgColor                 = UIColor(white: 1.0, alpha: 0.7)
     
     // Variables users can change
-    public var colorScheme        = HOKColorScheme.Hokusai
+    public var colorScheme        = HOKColorScheme.hokusai
     public var fontName           = ""
     public var colors:HOKColors!  = nil
     public var cancelButtonTitle  = "Cancel"
@@ -234,9 +234,9 @@ final public class Hokusai: UIViewController, UIGestureRecognizerDelegate {
 
     required public init() {
         super.init(nibName:nil, bundle:nil)
-        view.frame            = UIScreen.mainScreen().bounds
-        view.autoresizingMask = UIViewAutoresizing.FlexibleHeight
-        view.backgroundColor  = UIColor.clearColor()
+        view.frame            = UIScreen.main.bounds
+        view.autoresizingMask = UIViewAutoresizing.flexibleHeight
+        view.backgroundColor  = UIColor.clear
         
         menuView.frame = view.frame
         view.addSubview(menuView)
@@ -244,15 +244,15 @@ final public class Hokusai: UIViewController, UIGestureRecognizerDelegate {
         kButtonWidth = view.frame.width * 0.8
         
         // Gesture Recognizer for tapping outside the menu
-        let tapGesture = UITapGestureRecognizer(target: self, action: Selector("dismiss"))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(Hokusai.dismiss as (Hokusai) -> () -> ()))
         tapGesture.numberOfTapsRequired = 1
         tapGesture.delegate = self
         self.view.addGestureRecognizer(tapGesture)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onOrientationChange:", name: UIDeviceOrientationDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(Hokusai.onOrientationChange(_:)), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
     
-    func onOrientationChange(notification: NSNotification){
+    func onOrientationChange(_ notification: Notification){
 
         kButtonWidth = view.frame.width * 0.8
 
@@ -269,7 +269,7 @@ final public class Hokusai: UIViewController, UIGestureRecognizerDelegate {
         menuView.shapeLayer.layoutIfNeeded()
         menuView.layoutIfNeeded()
 
-        for var i = 0; i < buttons.count; i++ {
+        for i in 0 ..< buttons.count {
             let btn = buttons[i]
             btn.frame  = CGRect(x: 0.0, y: 0.0, width: kButtonWidth, height: kButtonHeight)
             btn.center = CGPoint(x: view.center.x, y: -kButtonHeight * 0.25 + (kButtonHeight + kButtonInterval) * CGFloat(i + 1))
@@ -277,11 +277,11 @@ final public class Hokusai: UIViewController, UIGestureRecognizerDelegate {
         self.view.layoutIfNeeded()
     }
     
-    override public init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override public init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName:nibNameOrNil, bundle:nibBundleOrNil)
     }
     
-    public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         if touch.view != gestureRecognizer.view {
             return false
         }
@@ -289,41 +289,41 @@ final public class Hokusai: UIViewController, UIGestureRecognizerDelegate {
     }
     
     // Add a button with a closure
-    public func addButton(title:String, action:()->Void) -> HOKButton {
+    public func addButton(_ title:String, action:@escaping ()->Void) -> HOKButton {
         let btn        = addButton(title)
         btn.action     = action
-        btn.actionType = HOKAcitonType.Closure
-        btn.addTarget(self, action:Selector("buttonTapped:"), forControlEvents:.TouchUpInside)
+        btn.actionType = HOKAcitonType.closure
+        btn.addTarget(self, action:#selector(Hokusai.buttonTapped(_:)), for:.touchUpInside)
         return btn
     }
     
     // Add a button with a selector
-    public func addButton(title:String, target:AnyObject, selector:Selector) -> HOKButton {
+    public func addButton(_ title:String, target:AnyObject, selector:Selector) -> HOKButton {
         let btn        = addButton(title)
         btn.target     = target
         btn.selector   = selector
-        btn.actionType = HOKAcitonType.Selector
-        btn.addTarget(self, action:Selector("buttonTapped:"), forControlEvents:.TouchUpInside)
+        btn.actionType = HOKAcitonType.selector
+        btn.addTarget(self, action:#selector(Hokusai.buttonTapped(_:)), for:.touchUpInside)
         return btn
     }
     
     // Add a cancel button
-    public func addCancelButton(title:String) -> HOKButton {
+    public func addCancelButton(_ title:String) -> HOKButton {
         if let cancelButtonAction = cancelButtonAction {
             return addButton(title, action: cancelButtonAction)
         } else {
             let btn        = addButton(title)
-            btn.addTarget(self, action:Selector("buttonTapped:"), forControlEvents:.TouchUpInside)
+            btn.addTarget(self, action:#selector(Hokusai.buttonTapped(_:)), for:.touchUpInside)
             btn.isCancelButton = true
             return btn
         }
     }
     
     // Add a button just with the title
-    private func addButton(title:String) -> HOKButton {
+    fileprivate func addButton(_ title:String) -> HOKButton {
         let btn = HOKButton()
         btn.layer.masksToBounds = true
-        btn.setTitle(title, forState: .Normal)
+        btn.setTitle(title, for: UIControlState())
         menuView.addSubview(btn)
         buttons.append(btn)
         return btn
@@ -331,7 +331,7 @@ final public class Hokusai: UIViewController, UIGestureRecognizerDelegate {
     
     // Show the menu
     public func show() {
-        if let rv = UIApplication.sharedApplication().keyWindow {
+        if let rv = UIApplication.shared.keyWindow {
             if rv.viewWithTag(HOKConsts().hokusaiTag) == nil {
                 view.tag = HOKConsts().hokusaiTag.hashValue
                 rv.addSubview(view)
@@ -347,7 +347,7 @@ final public class Hokusai: UIViewController, UIGestureRecognizerDelegate {
         let colors = (self.colors == nil) ? colorScheme.getColors() : self.colors
         
         // Set a background color of Menuview
-        menuView.setShapeLayer(colors)
+        menuView.setShapeLayer(colors!)
         
         // Add a cancel button
         self.addCancelButton("Cancel")
@@ -362,13 +362,13 @@ final public class Hokusai: UIViewController, UIGestureRecognizerDelegate {
         )
         
         // Locate buttons
-        for var i = 0; i < buttons.count; i++ {
+        for i in 0 ..< buttons.count {
             let btn = buttons[i]
             btn.frame  = CGRect(x: 0.0, y: 0.0, width: kButtonWidth, height: kButtonHeight)
             btn.center = CGPoint(x: view.center.x, y: -kButtonHeight * 0.25 + (kButtonHeight + kButtonInterval) * CGFloat(i + 1))
             btn.layer.cornerRadius = kButtonHeight * 0.5
             btn.setFontName(fontName)
-            btn.setColor(colors)
+            btn.setColor(colors!)
         }
         
         // Animations
@@ -383,12 +383,12 @@ final public class Hokusai: UIViewController, UIGestureRecognizerDelegate {
     }
     
     // Add an animation on showing the menu
-    private func animationWillStart() {
+    fileprivate func animationWillStart() {
         // Background
-        self.view.backgroundColor = UIColor.clearColor()
-        UIView.animateWithDuration(HOKConsts().animationDuration * 0.4,
+        self.view.backgroundColor = UIColor.clear
+        UIView.animate(withDuration: HOKConsts().animationDuration * 0.4,
             delay: 0.0,
-            options: UIViewAnimationOptions.CurveEaseOut,
+            options: UIViewAnimationOptions.curveEaseOut,
             animations: {
                 self.view.backgroundColor = self.bgColor
             },
@@ -397,11 +397,11 @@ final public class Hokusai: UIViewController, UIGestureRecognizerDelegate {
         
         // Menuview
         menuView.frame = CGRect(origin: CGPoint(x: 0.0, y: self.view.frame.height), size: menuView.frame.size)
-        UIView.animateWithDuration(HOKConsts().animationDuration,
+        UIView.animate(withDuration: HOKConsts().animationDuration,
             delay: 0.0,
             usingSpringWithDamping: 0.6,
             initialSpringVelocity: 0.6,
-            options: UIViewAnimationOptions.BeginFromCurrentState,
+            options: UIViewAnimationOptions.beginFromCurrentState,
             animations: {
                 self.menuView.frame = CGRect(origin: CGPoint(x: 0.0, y: self.view.frame.height-self.menuView.frame.height), size: self.menuView.frame.size)
                 self.menuView.layoutIfNeeded()
@@ -415,13 +415,13 @@ final public class Hokusai: UIViewController, UIGestureRecognizerDelegate {
     // Dismiss the menuview
     public func dismiss() {
         // Background and Menuview
-        UIView.animateWithDuration(HOKConsts().animationDuration,
+        UIView.animate(withDuration: HOKConsts().animationDuration,
             delay: 0.0,
             usingSpringWithDamping: 100.0,
             initialSpringVelocity: 0.6,
-            options: .BeginFromCurrentState,
+            options: .beginFromCurrentState,
             animations: {
-                self.view.backgroundColor = UIColor.clearColor()
+                self.view.backgroundColor = UIColor.clear
                 self.menuView.frame       = CGRect(origin: CGPoint(x: 0.0, y: self.view.frame.height), size: self.menuView.frame.size)
             },
             completion: {(finished) in
@@ -431,12 +431,12 @@ final public class Hokusai: UIViewController, UIGestureRecognizerDelegate {
     }
     
     // When the buttons are tapped, this method is called.
-    func buttonTapped(btn:HOKButton) {
-        if btn.actionType == HOKAcitonType.Closure {
+    func buttonTapped(_ btn:HOKButton) {
+        if btn.actionType == HOKAcitonType.closure {
             btn.action()
-        } else if btn.actionType == HOKAcitonType.Selector {
+        } else if btn.actionType == HOKAcitonType.selector {
             let control = UIControl()
-            control.sendAction(btn.selector, to:btn.target, forEvent:nil)
+            control.sendAction(btn.selector, to:btn.target, for:nil)
         } else {
             if !btn.isCancelButton {
                 print("Unknow action type for button")
