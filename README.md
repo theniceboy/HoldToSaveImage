@@ -7,10 +7,10 @@ A UIWebView (using Swift 2.0) that allows users to save a image from webview to 
 The code example was written in [ViewController.swift](https://github.com/theniceboy/HoldToSaveImage/blob/master/HoldToSaveImage/ViewController.swift)
 
 ### Requirements
-Swift 2.0 (2.1)
+Swift 3.0
 
 ### Version:
-1.0 (Sept. 12, 2015)
+1.1 (Feb. 18, 2017)
 
 ### Author:
 [theniceboy (David Chen)](http://cwsoft.cc)
@@ -21,9 +21,6 @@ Swift 2.0 (2.1)
 [github.com/JustHTTP/Just](https://github.com/JustHTTP/Just)
 
 [github.com/morizotter/SwiftyDrop](https://github.com/morizotter/SwiftyDrop)
-
-[github.com/icanzilb/TaskQueue](https://github.com/icanzilb/TaskQueue)
-
 ### License
 
 The MIT License (MIT)
