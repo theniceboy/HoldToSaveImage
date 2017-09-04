@@ -80,10 +80,10 @@ class ViewController: UIViewController, UIWebViewDelegate {
                 let data = try Data(contentsOf: URL(string: self._imgURL)!)
                 let getImage = UIImage(data: data)
                 let newImagePNG = UIImagePNGRepresentation(getImage!)
-                var saveableImage = UIImage(data: newImagePNG!)
-                
+                let saveableImage = UIImage(data: newImagePNG!)
                 
                 // Save to album
+                UIImageWriteToSavedPhotosAlbum(saveableImage!, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
             }
             catch {
                 Drop.down("Failed", state: DropState.error)

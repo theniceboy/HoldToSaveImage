@@ -2,25 +2,27 @@
 A UIWebView (using Swift 2.0) that allows users to save a image from webview to their photo album with the common operation: press and hold (long press).
 
 ### Usage
-![](https://raw.githubusercontent.com/theniceboy/HoldToSaveImage/master/demo.gif)
+![][image-1]
 
-The code example was written in [ViewController.swift](https://github.com/theniceboy/HoldToSaveImage/blob/master/HoldToSaveImage/ViewController.swift)
+The code example was written in [ViewController.swift][1]
+
+Note: Don’t forget to add the line “Privacy - Photo Library Usage Description” in your app’s plist file. (See [this article][6] for more information)
 
 ### Requirements
 Swift 3.0
 
 ### Version:
-1.1 (Feb. 18, 2017)
+1.1.1 (Sept. 4, 2017)
 
 ### Author:
-[theniceboy (David Chen)](http://cwsoft.cc)
+[theniceboy (David Chen)][2]
 
 ### Open-source project used:
-[github.com/ytakzk/Hokusai](https://github.com/ytakzk/Hokusai)
+[github.com/ytakzk/Hokusai][3]
 
-[github.com/JustHTTP/Just](https://github.com/JustHTTP/Just)
+[github.com/JustHTTP/Just][4]
 
-[github.com/morizotter/SwiftyDrop](https://github.com/morizotter/SwiftyDrop)
+[github.com/morizotter/SwiftyDrop][5]
 ### License
 
 The MIT License (MIT)
@@ -44,3 +46,12 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+[1]:	https://github.com/theniceboy/HoldToSaveImage/blob/master/HoldToSaveImage/ViewController.swift
+[2]:	http://cwsoft.cc
+[3]:	https://github.com/ytakzk/Hokusai
+[4]:	https://github.com/JustHTTP/Just
+[5]:	https://github.com/morizotter/SwiftyDrop
+[6]:    https://useyourloaf.com/blog/privacy-settings-in-ios-10/
+
+[image-1]:	https://raw.githubusercontent.com/theniceboy/HoldToSaveImage/master/demo.gif
