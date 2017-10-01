@@ -1,5 +1,5 @@
 ## HoldToSaveImage
-A UIWebView (using Swift 2.0) that allows users to save a image from webview to their photo album with the common operation: press and hold (long press).
+A UIWebView (using Swift 3.0) that allows users to save a image from webview to their photo album with the common operation: press and hold (long press).
 
 ### Usage
 ![][image-1]
