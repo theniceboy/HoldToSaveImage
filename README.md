@@ -1,7 +1,7 @@
 # HoldToSaveImage
 > A UIWebView (using Swift 3.0) that allows users to save a image from webview to their photo album with the common operation: press and hold (long press).
 
-[![Swift Version][image-1]][1]   ![License][image-2]   [![Platform][image-3]][2]
+[![Swift Version][image-1]][1]   ![License][image-2]   ![Platform][image-3]
 
 ![][image-4]
 
@@ -17,19 +17,19 @@
 
 ## Usage
 
-The code example was written in [ViewController.swift][3]
+The code example was written in [ViewController.swift][2]
 
 ## Meta
 
-Author: [theniceboy (David Chen)][4]
+Author: [theniceboy (David Chen)][3]
 
 ### Open-source project used
 
-[github.com/ytakzk/Hokusai][5]
+[github.com/ytakzk/Hokusai][4]
 
-[github.com/JustHTTP/Just][6]
+[github.com/JustHTTP/Just][5]
 
-[github.com/morizotter/SwiftyDrop][7]
+[github.com/morizotter/SwiftyDrop][6]
 
 ## License
 
@@ -57,15 +57,13 @@ SOFTWARE.
 
 
 [1]:	https://swift.org/
-[2]:	http://cocoapods.org/pods/LFAlertController
-[3]:	https://github.com/theniceboy/HoldToSaveImage/blob/master/HoldToSaveImage/ViewController.swift
-[4]:	http://cwsoft.cc
-[5]:	https://github.com/ytakzk/Hokusai
-[6]:	https://github.com/JustHTTP/Just
-[7]:	https://github.com/morizotter/SwiftyDrop
+[2]:	https://github.com/theniceboy/HoldToSaveImage/blob/master/HoldToSaveImage/ViewController.swift
+[3]:	http://cwsoft.cc
+[4]:	https://github.com/ytakzk/Hokusai
+[5]:	https://github.com/JustHTTP/Just
+[6]:	https://github.com/morizotter/SwiftyDrop
 
 [image-1]:	https://img.shields.io/badge/swift-3.0-orange.svg
 [image-2]:	https://img.shields.io/badge/License-MIT-blue.svg
 [image-3]:	https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat
 [image-4]:	https://raw.githubusercontent.com/theniceboy/HoldToSaveImage/master/demo.gif
-
