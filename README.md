@@ -1,29 +1,37 @@
-## HoldToSaveImage
-A UIWebView (using Swift 3.0) that allows users to save a image from webview to their photo album with the common operation: press and hold (long press).
+# HoldToSaveImage
+> A UIWebView (using Swift 3.0) that allows users to save a image from webview to their photo album with the common operation: press and hold (long press).
 
-### Usage
-![][image-1]
+[![Swift Version][image-1]][1]   ![License][image-2]   [![Platform][image-3]][2]
 
-The code example was written in [ViewController.swift][1]
+![][image-4]
 
-Note: Don’t forget to add the line “Privacy - Photo Library Usage Description” in your app’s plist file. (See [this article][6] for more information)
+## Features
 
-### Requirements
-Swift 3.0
+- [x] Detect hold (long press) gesture 
+- [x] Save image from webview to photo album
 
-### Version:
-1.1.1 (Sept. 4, 2017)
+## Requirements
 
-### Author:
-[theniceboy (David Chen)][2]
+- Swift 3.0+
+- iOS 8.0+ 
 
-### Open-source project used:
-[github.com/ytakzk/Hokusai][3]
+## Usage
 
-[github.com/JustHTTP/Just][4]
+The code example was written in [ViewController.swift][3]
 
-[github.com/morizotter/SwiftyDrop][5]
-### License
+## Meta
+
+Author: [theniceboy (David Chen)][4]
+
+### Open-source project used
+
+[github.com/ytakzk/Hokusai][5]
+
+[github.com/JustHTTP/Just][6]
+
+[github.com/morizotter/SwiftyDrop][7]
+
+## License
 
 The MIT License (MIT)
 
@@ -47,11 +55,17 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-[1]:	https://github.com/theniceboy/HoldToSaveImage/blob/master/HoldToSaveImage/ViewController.swift
-[2]:	http://cwsoft.cc
-[3]:	https://github.com/ytakzk/Hokusai
-[4]:	https://github.com/JustHTTP/Just
-[5]:	https://github.com/morizotter/SwiftyDrop
-[6]:    https://useyourloaf.com/blog/privacy-settings-in-ios-10/
 
-[image-1]:	https://raw.githubusercontent.com/theniceboy/HoldToSaveImage/master/demo.gif
+[1]:	https://swift.org/
+[2]:	http://cocoapods.org/pods/LFAlertController
+[3]:	https://github.com/theniceboy/HoldToSaveImage/blob/master/HoldToSaveImage/ViewController.swift
+[4]:	http://cwsoft.cc
+[5]:	https://github.com/ytakzk/Hokusai
+[6]:	https://github.com/JustHTTP/Just
+[7]:	https://github.com/morizotter/SwiftyDrop
+
+[image-1]:	https://img.shields.io/badge/swift-3.0-orange.svg
+[image-2]:	https://img.shields.io/badge/License-MIT-blue.svg
+[image-3]:	https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat
+[image-4]:	https://raw.githubusercontent.com/theniceboy/HoldToSaveImage/master/demo.gif
+
